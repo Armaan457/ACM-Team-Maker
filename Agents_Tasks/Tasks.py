@@ -1,6 +1,7 @@
 from pydantic import BaseModel
+from typing import List
 from crewai import Task, TaskOutput
-from Agent_Stuff.Agents import TeamAgent
+from Agents_Tasks.Agents import TeamAgent
 
 class Team(BaseModel):
     Team_Number: int
@@ -9,6 +10,9 @@ class Team(BaseModel):
 class PersonData(BaseModel):
     Name: str
     Skills: str
+
+class StudentList(BaseModel):
+    students: List[PersonData]
 
 def team_callback(output: TaskOutput):
         print(f"""
@@ -20,6 +24,7 @@ TeamMaking = Task(
     Here is the list of students with their skills: {input_data}""",
     expected_output="A JSON object with the key team number and values as a string containing all members.",
     agent = TeamAgent,
+    input_model=StudentList,
     output_json=Team,
     guardrail="Ensure that the response is a valid JSON object and the team is well balanced in terms of skills.",
     callback=team_callback,
