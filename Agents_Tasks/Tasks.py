@@ -5,7 +5,7 @@ from Agents_Tasks.Agents import TeamAgent
 
 class Team(BaseModel):
     Team_Number: int
-    Members: str
+    Member_Names: str
 
 class PersonData(BaseModel):
     Name: str
@@ -26,8 +26,8 @@ TeamMaking = Task(
     agent = TeamAgent,
     input_model=StudentList,
     output_json=Team,
-    guardrail="Ensure that the response is a valid JSON object and the team is well balanced in terms of skills.",
+    guardrail="Ensure that the response is a valid JSON object.",
     callback=team_callback,
-    output_file='outputs/Teams.json',
+    output_file='Outputs/Teams.json',
     create_directory=True
 )
