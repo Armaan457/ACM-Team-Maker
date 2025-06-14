@@ -1,12 +1,13 @@
 import csv
 import json
 from collections import defaultdict
+import os
 from Agents.crews import Idea_Crew, Team_Crew
 
 INPUT_CSV_PATH = r'Data/Intra ACM Hackathon 2025 (Responses) - Form Responses 1.csv'
-TEAMS_JSON_PATH = r'Outputs/Teams.json'
-IDEAS_JSON_PATH = r'Outputs/Team_Idea.json'
-FINAL_CSV_PATH = r'Data/final_team_ideas.csv'
+TEAMS_JSON_PATH = r'Output/Teams.json'
+IDEAS_JSON_PATH = r'Output/Team_Idea.json'
+FINAL_CSV_PATH = r'Output/final_team_ideas.csv'
 
 print("--- Team Maker Crew Loading ---")
 try:
@@ -104,3 +105,5 @@ else:
         writer.writerows(output_rows)
     print(f"\n🎉 SUCCESS: Process complete!")
     print(f"Final merged report for {len(output_rows)} teams saved to: {FINAL_CSV_PATH}")
+    os.remove(TEAMS_JSON_PATH)
+    os.remove(IDEAS_JSON_PATH)

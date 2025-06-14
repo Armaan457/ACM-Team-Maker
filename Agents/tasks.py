@@ -20,7 +20,7 @@ TeamMaking = Task(
     input_model=StudentList,
     guardrail="Ensure that the response is a valid JSON object.",
     callback=team_callback,
-    output_file='Outputs/Teams.json',
+    output_file='Output/Teams.json',
     create_directory=True
 )
 
@@ -33,6 +33,6 @@ IdeaChoosing = Task(
     input_model=IdeaList,
     guardrail="Ensure that the response is a valid JSON object and no team is missing.",
     callback=idea_callback,
-    output_file='Outputs/Team_Idea.json',
+    output_file='Output/Team_Idea.json',
     create_directory=True
 )
