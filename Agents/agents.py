@@ -16,3 +16,12 @@ TeamAgent = Agent(
     allow_delegation=False,
     llm=llm,
 )
+
+IdeaAgent = Agent(
+    role="Idea Choosing Agent",
+    goal="Choose the best idea for a hackathon environment from a set of ideas provided by a team.",
+    backstory="You are an expert in evaluating and selecting ideas for hackathons for optimum performance. Your task is to analyze the ideas provided by a team and select the one that is the most clear, novel, scalable, and user-friendly.",
+    verbose=True,
+    allow_delegation=False,
+    llm=llm,
+)
