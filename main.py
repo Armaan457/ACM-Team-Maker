@@ -25,6 +25,14 @@ except FileNotFoundError:
     print(f"The input CSV file was not found at {INPUT_CSV_PATH}")
     exit()
 
+unique_students = {}
+for student in all_student_data:
+    name = student["Name"]
+    if name and name not in unique_students:
+        unique_students[name] = student
+all_student_data = list(unique_students.values())
+print(f"After removing duplicates, {len(all_student_data)} unique students remain.")
+
 team_making_input_data = [{"Name": s["Name"], "Skills": s["Skills"]} for s in all_student_data]
 team_making_input_str = json.dumps(team_making_input_data, indent=2)
 
