@@ -8,7 +8,6 @@ The entire workflow is orchestrated in a single script, producing a final, clean
 ## ✨ Features
 
 -   **AI-Powered Team Formation**: Analyzes participant skills to create balanced and synergistic teams.
--   **Automated Idea Aggregation**: Collects all project ideas submitted by members of each newly formed team.
 -   **AI-Driven Idea Selection**: Evaluates the aggregated ideas for each team and chooses the best one to pursue.
 -   **End-to-End Automation**: Runs the entire process—from raw registration data to a final report—with a single command.
 -   **Modular & Extendable**: Built with a clear structure, making it easy to customize agents, tasks, or the workflow itself.
@@ -65,5 +64,7 @@ For the sake of privacy the Data and Output folder have not been tracked to GitH
 ├── .gitgnore           # For specifying files and directories which should be ignored in version control
 ├── main.py             # Main script to orchestrate the entire workflow  
 ├── pyproject.toml      # Project metadata and dependencies
+├── uv.lock             # Locks exact versions of all dependencies and sub dependencies
+├── .python-version     # Specifies the Python version
 └── README.md           # You are here!
 ```
