@@ -2,14 +2,13 @@ import csv
 import json
 from collections import defaultdict
 import os
-from Agents.crews import Idea_Crew, Team_Crew
+from Crews.crews import ACMTeamMaker
 
 INPUT_CSV_PATH = r'Data/Intra ACM Hackathon 2025 (Responses) - Form Responses 1.csv'
 TEAMS_JSON_PATH = r'Output/Teams.json'
 IDEAS_JSON_PATH = r'Output/Team_Idea.json'
 FINAL_CSV_PATH = r'Output/final_team_ideas.csv'
 
-print("--- Team Maker Crew Loading ---")
 try:
     all_student_data = []
     with open(INPUT_CSV_PATH, mode='r', encoding='utf-8') as csvfile:
@@ -36,9 +35,7 @@ print(f"After removing duplicates, {len(all_student_data)} unique students remai
 team_making_input_data = [{"Name": s["Name"], "Skills": s["Skills"]} for s in all_student_data]
 team_making_input_str = json.dumps(team_making_input_data, indent=2)
 
-team_crew_output = Team_Crew.kickoff(inputs={"input_data": team_making_input_str})
-
-print("--- Idea Choosing Crew Loading ---")
+team_crew_output = ACMTeamMaker().TeamCrew().kickoff(inputs={"input_data": team_making_input_str})
 
 try:
     with open(TEAMS_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -70,7 +67,7 @@ idea_choosing_input_data = [
 ]
 idea_choosing_input_str = json.dumps(idea_choosing_input_data, indent=2)
 
-idea_crew_output = Idea_Crew.kickoff(inputs={"team_data": idea_choosing_input_str})
+idea_crew_output = ACMTeamMaker().IdeaCrew().kickoff(inputs={"team_data": idea_choosing_input_str})
 
 print("--- Merging ---")
 
@@ -111,7 +108,7 @@ else:
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(output_rows)
-    print(f"\n🎉 SUCCESS: Process complete!")
+    print(f"\nProcess completed!")
     print(f"Final merged report for {len(output_rows)} teams saved to: {FINAL_CSV_PATH}")
     os.remove(TEAMS_JSON_PATH)
     os.remove(IDEAS_JSON_PATH)

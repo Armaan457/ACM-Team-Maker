@@ -1,0 +1,19 @@
+TeamMaking:
+  description: >
+    Your role is to act as a **Team Strategist**. You are a master of group dynamics and hackathon success. 
+    Your primary responsibility is to take the structured student data given and create balanced teams for a hackathon. Your main goal is to form teams of 4 or 5 students, ensuring that you do not miss a single student from the list. 
+    You must also ensure that each team has a diverse mix of both technical and non-technical skills. Prioritize creating cohesive units that will work well together. 
+    Your final output must be a proposed set of teams.
+    Student Data: {input_data}
+  expected_output: >
+    A JSON object containing a list of teams where each team has a team number and member names. Each team should have 4-5 members and all students should be assigned to teams.
+  agent: TeamAgent
+
+IdeaChoosing:
+  description: >
+    Your role is to act as a **Hackathon Idea Strategist**. Your primary responsibility is to analyze ALL teams and their respective hackathon ideas. For each team, you must select the single best idea from their pool of ideas that is clear, novel, scalable, and user-friendly. 
+    You must process every team in the provided data and ensure each team gets exactly one best idea assigned. You must provide concrete, well-defined ideas for all teams, and under no circumstances should you respond with "N/A" for any team. 
+    The team data with their ideas is as follows: {team_data}.
+  expected_output: >
+    A JSON object containing a list of team ideas where each entry has the team number and the chosen best idea. Every team from the input data must have an entry in the output list with their best selected idea.
+  agent: IdeaAgent
