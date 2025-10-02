@@ -21,7 +21,7 @@ The `main.py` script executes a four-step pipeline:
 
 1.  **Team Formation Crew**:
     -   Reads participant names and skills from the input CSV.
-    -   The `Team_Crew` with a `TeamAgent` executes a `TeamMaking` task.
+    -   The `TeamCrew` with a `TeamAgent` executes a `TeamMaking` task.
     -   **Output**: A `Output/Teams.json` file detailing the members of each team.
 
 2.  **Idea Aggregation**:
@@ -29,7 +29,7 @@ The `main.py` script executes a four-step pipeline:
     -   It collects all the project ideas submitted by the members of each team.
 
 3.  **Idea Selection Crew**:
-    -   The aggregated ideas for each team are passed to a `Idea_Crew`.
+    -   The aggregated ideas for each team are passed to a `IdeaCrew`.
     -   An `IdeaAgent` executes an `IdeaChoosing` task to analyze the ideas and select the best one for each team.
     -   **Output**: A `Output/Team_Idea.json` file containing the chosen idea for each team.
 
